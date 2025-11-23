@@ -1,0 +1,208 @@
+/* VARIABLES ET RÉINITIALISATION DE BASE */
+:root {
+    --color-primary: #007bff; /* Bleu professionnel */
+    --color-secondary: #f4f7f6; /* Gris très clair pour les fonds */
+    --color-text: #333;
+    --color-light: #fff;
+    --font-primary: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-light);
+}
+
+/* TYPOGRAPHIE ET EN-TÊTES */
+/* ... (Les règles H1, H2, H3, H4 restent les mêmes) ... */
+h1, h2, h3, h4 { margin-bottom: 0.5em; font-weight: 600; }
+h1 { font-size: 2.5em; color: var(--color-primary); }
+h2 { font-size: 1.8em; color: var(--color-light); /* Changé pour le fond sombre */ }
+h3 { 
+    font-size: 1.6em; 
+    text-align: center;
+    margin-top: 1.5em; 
+    margin-bottom: 1em; 
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* LAYOUT GÉNÉRAL */
+section {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER / NAVIGATION */
+/* ... (Les règles de l'en-tête restent les mêmes) ... */
+header {
+    background-color: var(--color-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo { font-size: 1.5em; font-weight: 700; color: var(--color-primary); }
+header nav a { margin-left: 25px; font-weight: 500; color: var(--color-text); }
+
+
+/* SECTION ACCUEIL (HERO) AVEC IMAGE DE FOND ET EFFET DARK OVERLAY */
+#hero {
+    /* REMPLACER background-tech.png PAR LE NOM EXACT DE VOTRE IMAGE */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('background-tech.png') no-repeat center center;
+    background-size: cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px; 
+    color: var(--color-light); /* Texte blanc sur fond sombre */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.tagline {
+    font-size: 1.1em;
+    margin: 20px 0 30px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- ANIMATIONS CSS --- */
+
+/* Définition de l'animation de fondu */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation au chargement de la section Hero */
+.animate-on-load {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Animation pour les blocs qui glissent vers le haut */
+.animate-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Appliquer le délai pour l'effet de séquence */
+#about .info-block:nth-child(1) { transition-delay: 0.1s; }
+#about .info-block:nth-child(2) { transition-delay: 0.3s; }
+#about .info-block:nth-child(3) { transition-delay: 0.5s; }
+.project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-card:nth-child(2) { transition-delay: 0.3s; }
+
+/* Rendre l'animation visible quand l'utilisateur atteint le bloc (nécessite du JS) */
+/* Pour une version simple sans JS, on les met en visible immédiatement : */
+.animate-slide-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Le reste du CSS (Compétences, Projets, Contact) --- */
+
+/* SECTION À PROPOS */
+/* ... (Reste le même) ... */
+#about { background-color: var(--color-light); padding-bottom: 30px; }
+.about-grid { display: flex; gap: 30px; margin-top: 30px; text-align: left; }
+.info-block { flex: 1; background: var(--color-secondary); padding: 20px; border-radius: 8px; }
+.highlight { font-weight: 700; color: var(--color-primary); margin-top: 10px; }
+
+
+/* SECTION COMPÉTENCES */
+/* ... (Reste le même) ... */
+#skills { background-color: #f0f0f0; }
+.skills-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.skill-group { background: var(--color-light); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex: 1; min-width: 250px; }
+.skill-group h4 { border-bottom: 1px dashed var(--color-secondary); padding-bottom: 10px; margin-bottom: 15px; text-align: center; color: #666; }
+.tags span {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-light);
+    padding: 5px 12px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: transform 0.2s; /* Animation sur les tags */
+}
+.tags span:hover { transform: translateY(-3px); }
+
+
+/* SECTION PROJETS */
+/* ... (Reste le même) ... */
+.project-card {
+    background: var(--color-light);
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.project-card h4 { color: var(--color-primary); margin-bottom: 10px; text-align: left; }
+.tech-used { font-style: italic; color: #666; margin-bottom: 15px; }
+.project-links a { margin-right: 15px; margin-top: 15px; display: inline-block; }
+
+
+/* SECTION VEILLE TECHNOLOGIQUE */
+/* ... (Reste le même) ... */
+#veille { background-color: var(--color-secondary); }
+.intro-veille { text-align: center; margin-bottom: 30px; font-style: italic; }
+.veille-topic {
+    background: var(--color-light);
+    padding: 30px;
+    border-left: 5px solid var(--color-primary);
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.veille-topic h4 { color: var(--color-primary); text-align: left; }
+
+/* SECTION CONTACT */
+/* ... (Reste le même) ... */
+#contact { text-align: center; }
+.contact-links { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.contact-link { display: block; padding: 15px 25px; border: 1px solid var(--color-secondary); border-radius: 5px; min-width: 250px; background: var(--color-secondary); }
+.contact-link:hover { background: var(--color-primary); color: var(--color-light); }
+
+/* FOOTER */
+/* ... (Reste le même) ... */
+footer { background-color: #333; color: var(--color-light); text-align: center; padding: 20px 0; font-size: 0.8em; }
+
+/* MEDIA QUERIES pour la Responsivité */
+/* ... (Reste le même) ... */
+@media (max-width: 768px) {
+    .about-grid { flex-direction: column; }
+    header nav { display: none; }
+    header { justify-content: center; }
+}
